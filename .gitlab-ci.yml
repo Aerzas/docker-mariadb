@@ -1,0 +1,24 @@
+variables:
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - build
+
+.build: &build
+  only:
+    - tags
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  before_script:
+    - echo "{\"auths\":{\"${DOCKERHUB_REGISTRY}\":{\"username\":\"${DOCKERHUB_USER}\",\"password\":\"${DOCKERHUB_TOKEN}\"}}}" > /kaniko/.docker/config.json
+  script:
+    - /kaniko/executor --build-arg BUILD_ALPINE_TAG --build-arg BUILD_MARIADB_PACKAGE_VERSION --context ${CI_PROJECT_DIR} --destination ${DOCKERHUB_IMAGE_PATH}:${BUILD_MARIADB_VERSION}-${CI_COMMIT_TAG} --dockerfile ${CI_PROJECT_DIR}/Dockerfile
+
+build:10.4:
+  <<: *build
+  variables:
+    BUILD_ALPINE_TAG: '3.11'
+    BUILD_MARIADB_PACKAGE_VERSION: 10.4.12-r0
+    BUILD_MARIADB_VERSION: '10.4'

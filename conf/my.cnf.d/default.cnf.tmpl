@@ -1,0 +1,97 @@
+[mysqld_safe]
+nice = 0
+socket = /var/run/mysqld/mysqld.sock
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet = $MYSQL_DUMP_MAX_ALLOWED_PACKET
+
+[mysqlhotcopy]
+interactive-timeout
+
+[client]
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+default-character-set = $MYSQL_CLIENT_DEFAULT_CHARACTER_SET
+
+[mysqld]
+bind-address = 0.0.0.0
+basedir = /usr
+datadir = /var/lib/mysql
+connect_timeout = $MYSQL_CONNECT_TIMEOUT
+pid-file = /var/run/mysqld/mysqld.pid
+socket = /var/run/mysqld/mysqld.sock
+log-warnings
+skip-external-locking
+
+collation-server = $MYSQL_COLLATION_SERVER
+init_connect = $MYSQL_INIT_CONNECT
+character_set_server = $MYSQL_CHARACTER_SET_SERVER
+character_set_filesystem = $MYSQL_CHARACTER_SET_FILESYSTEM
+
+symbolic-links = 0
+default_storage_engine = $MYSQL_DEFAULT_STORAGE_ENGINE
+
+skip-character-set-client-handshake
+skip-host-cache
+skip-name-resolve
+
+back_log = $MYSQL_BACK_LOG
+
+join_buffer_size = $MYSQL_JOIN_BUFFER_SIZE
+max_heap_table_size = $MYSQL_MAX_HEAP_TABLE_SIZE
+query_cache_limit = $MYSQL_QUERY_CACHE_LIMIT
+query_cache_min_res_unit = $MYSQL_QUERY_CACHE_MIN_RES_UNIT
+query_cache_size = $MYSQL_QUERY_CACHE_SIZE
+query_cache_type = $MYSQL_QUERY_CACHE_TYPE
+sort_buffer_size = $MYSQL_SORT_BUFFER_SIZE
+table_definition_cache = $MYSQL_TABLE_DEFINITION_CACHE
+table_open_cache = $MYSQL_TABLE_OPEN_CACHE
+thread_cache_size = $MYSQL_THREAD_CACHE_SIZE
+tmp_table_size = $MYSQL_TMP_TABLE_SIZE
+
+max_allowed_packet = $MYSQL_MAX_ALLOWED_PACKET
+max_connect_errors = $MYSQL_MAX_CONNECT_ERRORS
+max_connections = $MYSQL_MAX_CONNECTIONS
+
+innodb_buffer_pool_instances = $MYSQL_INNODB_BUFFER_POOL_INSTANCES
+innodb_buffer_pool_size = $MYSQL_INNODB_BUFFER_POOL_SIZE
+innodb_data_file_path = $MYSQL_INNODB_DATA_FILE_PATH
+innodb_default_row_format = $MYSQL_INNODB_DEFAULT_ROW_FORMAT
+innodb_fast_shutdown = $MYSQL_INNODB_FAST_SHUTDOWN
+innodb_file_per_table = $MYSQL_INNODB_FILE_PER_TABLE
+innodb_flush_log_at_trx_commit = $MYSQL_INNODB_FLUSH_LOG_AT_TRX_COMMIT
+innodb_flush_method = $MYSQL_INNODB_FLUSH_METHOD
+innodb_force_load_corrupted = $MYSQL_INNODB_FORCE_LOAD_CORRUPTED
+innodb_force_recovery = $MYSQL_INNODB_FORCE_RECOVERY
+innodb_io_capacity = $MYSQL_INNODB_IO_CAPACITY
+innodb_lock_wait_timeout = $MYSQL_INNODB_LOCK_WAIT_TIMEOUT
+innodb_log_buffer_size = $MYSQL_INNODB_LOG_BUFFER_SIZE
+innodb_log_file_size = $MYSQL_INNODB_LOG_FILE_SIZE
+innodb_log_files_in_group = $MYSQL_INNODB_LOG_FILES_IN_GROUP
+innodb_old_blocks_time = $MYSQL_INNODB_OLD_BLOCKS_TIME
+innodb_open_files = $MYSQL_INNODB_OPEN_FILES
+innodb_purge_threads = $MYSQL_INNODB_PURGE_THREADS
+innodb_read_io_threads = $MYSQL_INNODB_READ_IO_THREADS
+innodb_stats_on_metadata = $MYSQL_INNODB_STATS_ON_METADATA
+innodb_strict_mode = $MYSQL_INNODB_STRICT_MODE
+innodb_write_io_threads = $MYSQL_INNODB_WRITE_IO_THREADS
+
+performance_schema = $MYSQL_PERFORMANCE_SCHEMA
+
+long_query_time = $MYSQL_LONG_QUERY_TIME
+slow_query_log = $MYSQL_SLOW_QUERY_LOG
+general_log = $MYSQL_GENERAL_LOG
+
+log_warnings = $MYSQL_LOG_WARNINGS
+
+net_write_timeout = $MYSQL_NET_WRITE_TIMEOUT
+net_read_timeout = $MYSQL_NET_READ_TIMEOUT
+wait_timeout = $MYSQL_WAIT_TIMEOUT
+interactive_timeout = $MYSQL_INTERACTIVE_TIMEOUT
+
+relay_log_recovery = $MYSQL_RELAY_LOG_RECOVERY
+
+optimizer_prune_level = $MYSQL_OPTIMIZER_PRUNE_LEVEL
+optimizer_search_depth = $MYSQL_OPTIMIZER_SEARCH_DEPTH
