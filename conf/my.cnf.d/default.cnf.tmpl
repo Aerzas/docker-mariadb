@@ -16,9 +16,10 @@ socket = /var/run/mysqld/mysqld.sock
 default-character-set = $MYSQL_CLIENT_DEFAULT_CHARACTER_SET
 
 [mysqld]
+skip-networking = 0
 bind-address = 0.0.0.0
 basedir = /usr
-datadir = /var/lib/mysql
+datadir = $MARIADB_DATA_DIR
 connect_timeout = $MYSQL_CONNECT_TIMEOUT
 pid-file = /var/run/mysqld/mysqld.pid
 socket = /var/run/mysqld/mysqld.sock

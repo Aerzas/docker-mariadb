@@ -2,7 +2,8 @@ ARG BUILD_ALPINE_TAG
 
 FROM alpine:${BUILD_ALPINE_TAG}
 
-ENV APP_ROOT="/var/lib/mysql"
+ENV MARIADB_DATA_DIR="/var/lib/mysql" \
+    MARIABD_INIT_FILE="/tmp/mysqld-init"
 
 ARG BUILD_MARIADB_PACKAGE_VERSION
 
@@ -35,20 +36,20 @@ RUN set -ex; \
     cp /usr/bin/envsubst /usr/local/bin/envsubst; \
     apk del .gettext; \
     # Prepare base folders
-    mkdir -p ${APP_ROOT} \
+    mkdir -p ${MARIADB_DATA_DIR} \
         /etc/mysql \
         /etc/mysql/my.cnf.d/ \
         /var/mysql \
         /var/run/mysqld \
         /usr/lib/mysql/plugin; \
     # Execute mariadb as any user
-    chgrp -R 0 ${APP_ROOT} \
+    chgrp -R 0 ${MARIADB_DATA_DIR} \
         /etc/mysql \
         /etc/mysql/my.cnf.d/ \
         /var/mysql \
         /var/run/mysqld \
         /usr/lib/mysql/plugin; \
-    chmod -R g+rwX ${APP_ROOT} \
+    chmod -R g+rwX ${MARIADB_DATA_DIR} \
         /etc/mysql \
         /etc/mysql/my.cnf.d/ \
         /var/mysql \
@@ -58,9 +59,9 @@ RUN set -ex; \
     rm -rf /tmp/* \
         /var/cache/apk/*; \
     # Initializing script
-    touch /tmp/mysqld-init; \
-    chgrp 0 /tmp/mysqld-init; \
-    chmod g+rwX /tmp/mysqld-init
+    touch ${MARIABD_INIT_FILE}; \
+    chgrp 0 ${MARIABD_INIT_FILE}; \
+    chmod g+rwX ${MARIABD_INIT_FILE}
 
 ENV MYSQL_BACK_LOG=100 \
     MYSQL_CHARACTER_SET_FILESYSTEM=utf8mb4 \
@@ -130,8 +131,8 @@ COPY conf/my.cnf.tmpl /etc/mysql/
 COPY conf/my.cnf.d/* /etc/mysql/my.cnf.d/
 COPY scripts/*.sh /scripts/
 
-WORKDIR ${APP_ROOT}
-VOLUME ${APP_ROOT}
+WORKDIR ${MARIADB_DATA_DIR}
+VOLUME ${MARIADB_DATA_DIR}
 
 EXPOSE 3306
 
