@@ -35,20 +35,20 @@ RUN set -ex; \
     cp /usr/bin/envsubst /usr/local/bin/envsubst; \
     apk del .gettext; \
     # Prepare base folders
-    mkdir -p $APP_ROOT \
+    mkdir -p ${APP_ROOT} \
         /etc/mysql \
         /etc/mysql/my.cnf.d/ \
         /var/mysql \
         /var/run/mysqld \
         /usr/lib/mysql/plugin; \
     # Execute mariadb as any user
-    chgrp -R 0 $APP_ROOT \
+    chgrp -R 0 ${APP_ROOT} \
         /etc/mysql \
         /etc/mysql/my.cnf.d/ \
         /var/mysql \
         /var/run/mysqld \
         /usr/lib/mysql/plugin; \
-    chmod -R g+rwX $APP_ROOT \
+    chmod -R g+rwX ${APP_ROOT} \
         /etc/mysql \
         /etc/mysql/my.cnf.d/ \
         /var/mysql \
@@ -130,8 +130,8 @@ COPY conf/my.cnf.tmpl /etc/mysql/
 COPY conf/my.cnf.d/* /etc/mysql/my.cnf.d/
 COPY scripts/*.sh /scripts/
 
-WORKDIR $APP_ROOT
-VOLUME $APP_ROOT
+WORKDIR ${APP_ROOT}
+VOLUME ${APP_ROOT}
 
 EXPOSE 3306
 
