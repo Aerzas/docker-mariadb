@@ -8,12 +8,12 @@ if [ -z "${build_version}" ]; then
   exit 1;
 fi;
 
-registry_image='aerzas/mariadb';
+registry_image='faering/mariadb';
 declare -A mariadb_alpine_versions=(
-  [10.4]=3.11
+  [10.4]=3.11.6
 );
 declare -A mariadb_versions=(
-  [10.4]=10.4.12-r0
+  [10.4]=10.4.13-r0
 );
 
 build_mariadb()
