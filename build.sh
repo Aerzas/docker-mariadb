@@ -19,7 +19,7 @@ mariadb_alpine_tag() {
 
   case ${mariadb_version} in
   10.4)
-    echo 3.11.6
+    echo 3.12.0
     ;;
   *)
     return 0
