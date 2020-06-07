@@ -14,10 +14,13 @@ if [ -n "$MYSQL_USER" ] && [ -z "$MYSQL_USER_PASSWORD" ]; then
 fi
 
 # Replace environment variables in template files
-envs=$(printf '${%s} ' "$(sh -c \"env | cut -d'=' -f1\")")
-find /etc/mysql -name '*.tmpl' \
-  -exec sh -c 'filename="$1"; envsubst "${envs}" <"${filename}" >"${filename%?????}"' \
-  -exec rm {} \;
+envs=$(printf '${%s} ' $(sh -c "env | cut -d'=' -f1"))
+find /etc/mysql -type f -name '*.tmpl' > /tmp/tmpl
+while IFS= read -r filename; do
+  envsubst "${envs}" <"${filename}" >"${filename%.tmpl}"
+  rm "${filename}"
+done < /tmp/tmpl
+rm /tmp/tmpl
 
 sh /scripts/init-database.sh
 
