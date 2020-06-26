@@ -8,7 +8,7 @@ if [ -z "${build_version}" ]; then
   exit 1
 fi
 
-registry_image='faering/mariadb'
+registry_image='aerzas/mariadb'
 
 mariadb_alpine_tag() {
   mariadb_version="${1}"

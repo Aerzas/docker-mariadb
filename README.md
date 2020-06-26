@@ -2,7 +2,7 @@
 
 MariaDB docker container image that requires no specific user or root permission to function.
 
-Docker Hub image: [https://hub.docker.com/r/faering/mariadb](https://hub.docker.com/r/faering/mariadb)
+Docker Hub image: [https://hub.docker.com/r/aerzas/mariadb](https://hub.docker.com/r/aerzas/mariadb)
 
 ## Docker compose example
 
@@ -10,7 +10,7 @@ Docker Hub image: [https://hub.docker.com/r/faering/mariadb](https://hub.docker.
 version: '3.5'
 services:
     php:
-        image: faering/mariadb:10.4-1.0.1
+        image: aerzas/mariadb:10.4-1.0.1
         environment:
             MYSQL_DATABASE: sampledb
             MYSQL_ROOT_PASSWORD: 3x@mplE
