@@ -19,7 +19,10 @@ mariadb_alpine_tag() {
 
   case ${mariadb_version} in
   10.4)
-    echo 3.12.1
+    echo 3.12.7
+    ;;
+  10.5)
+    echo 3.14.2
     ;;
   *)
     return 0
@@ -36,7 +39,10 @@ mariadb_package_version() {
 
   case ${mariadb_version} in
   10.4)
-    echo 10.4.15-r0
+    echo 10.4.21-r0
+    ;;
+  10.5)
+    echo 10.5.12-r0
     ;;
   *)
     return 0
@@ -79,4 +85,5 @@ if [ -n "${build_mariadb_version}" ]; then
 # Build all MariaDB versions
 else
   build_mariadb 10.4
+  build_mariadb 10.5
 fi
