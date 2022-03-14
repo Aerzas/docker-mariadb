@@ -1,0 +1,49 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - mariadb-version: 10.4
+            mariadb-package-version: 10.4.22-r0
+            mariadb-alpine-image: alpine:3.12.9
+          - mariadb-version: 10.5
+            mariadb-package-version: 10.5.13-r0
+            mariadb-alpine-image: alpine:3.14.3
+          - mariadb-version: 10.6
+            mariadb-package-version: 10.6.4-r2
+            mariadb-alpine-image: alpine:3.15.0
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build ${{ matrix.mariadb-version }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            BUILD_ALPINE_IMAGE=${{ matrix.mariadb-alpine-image }}
+            BUILD_MARIADB_PACKAGE_VERSION=${{ matrix.mariadb-package-version }}
+          push: true
+          tags: aerzas/mariadb:${{ matrix.mariadb-version }}-latest,aerzas/mariadb:${{ matrix.mariadb-version }}-${{ github.ref_name }}
