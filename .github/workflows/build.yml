@@ -11,15 +11,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - mariadb-version: 10.4
-            mariadb-package-version: 10.4.22-r0
-            mariadb-alpine-image: alpine:3.12.9
-          - mariadb-version: 10.5
-            mariadb-package-version: 10.5.13-r0
-            mariadb-alpine-image: alpine:3.14.3
-          - mariadb-version: 10.6
-            mariadb-package-version: 10.6.4-r2
-            mariadb-alpine-image: alpine:3.15.0
+          -
+            mariadb-version: 10.4
+            mariadb-package-version: 10.4.25-r0
+            mariadb-alpine-image: alpine:3.12.12
+          -
+            mariadb-version: 10.5
+            mariadb-package-version: 10.5.16-r0
+            mariadb-alpine-image: alpine:3.14.6
+          -
+            mariadb-version: 10.6
+            mariadb-package-version: 10.6.8-r0
+            mariadb-alpine-image: alpine:3.16.0
     steps:
       -
         name: Checkout
