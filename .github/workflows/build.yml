@@ -21,8 +21,8 @@ jobs:
             mariadb-alpine-image: alpine:3.14.8
           -
             mariadb-version: 10.6
-            mariadb-package-version: 10.6.10-r0
-            mariadb-alpine-image: alpine:3.16.3
+            mariadb-package-version: 10.6.11-r0
+            mariadb-alpine-image: alpine:3.17.1
     steps:
       -
         name: Checkout
