@@ -10,7 +10,7 @@ Docker Hub image: [https://hub.docker.com/r/aerzas/mariadb](https://hub.docker.c
 version: '3.5'
 services:
     php:
-        image: aerzas/mariadb:10.6-latest
+        image: aerzas/mariadb:10.11-latest
         environment:
             MYSQL_DATABASE: sampledb
             MYSQL_ROOT_PASSWORD: 3x@mplE
