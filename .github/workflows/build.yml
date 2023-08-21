@@ -12,14 +12,6 @@ jobs:
       matrix:
         include:
           -
-            mariadb-version: 10.4
-            mariadb-package-version: 10.4.25-r0
-            mariadb-alpine-image: alpine:3.12.12
-          -
-            mariadb-version: 10.5
-            mariadb-package-version: 10.5.17-r0
-            mariadb-alpine-image: alpine:3.14.8
-          -
             mariadb-version: 10.6
             mariadb-package-version: 10.6.11-r0
             mariadb-alpine-image: alpine:3.17.1
