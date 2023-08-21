@@ -13,8 +13,8 @@ jobs:
         include:
           -
             mariadb-version: 10.6
-            mariadb-package-version: 10.6.11-r0
-            mariadb-alpine-image: alpine:3.17.1
+            mariadb-package-version: 10.6.14-r0
+            mariadb-alpine-image: alpine:3.17.5
     steps:
       -
         name: Checkout
