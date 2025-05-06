@@ -15,6 +15,12 @@ port = 3306
 socket = /var/run/mysqld/mysqld.sock
 default-character-set = $MYSQL_CLIENT_DEFAULT_CHARACTER_SET
 
+[mariadb]
+tls_version = $MARIADB_TLS_VERSION
+ssl_cert = $MARIADB_SSL_CERT
+ssl_key = $MARIADB_SSL_KEY
+ssl_ca = $MARIADB_SSL_CA
+
 [mysqld]
 skip-networking = 0
 bind-address = 0.0.0.0

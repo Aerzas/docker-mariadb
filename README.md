@@ -48,7 +48,12 @@ parameters. If no password is provided, one will be generated.
 | `MYSQL_ROOT_PASSWORD`                  |                                  |
 | `MYSQL_USER`                           |                                  |
 | `MYSQL_USER_PASSWORD`                  |                                  |
-| **mysqldump**                          |                                  |
+| **mariadb**                            |                                  |
+| `MARIADB_TLS_VERSION`                  | `TLSv1.2,TLSv1.3`                |
+| `MARIADB_SSL_CERT`                     |                                  |
+| `MARIADB_SSL_KEY`                      |                                  |
+| `MARIADB_SSL_CA`                       |                                  |
+| **mysqld**                             |                                  |
 | `MYSQL_BACK_LOG`                       | `100`                            |
 | `MYSQL_CHARACTER_SET_FILESYSTEM`       | `utf8mb4`                        |
 | `MYSQL_CHARACTER_SET_SERVER`           | `utf8mb4`                        |
