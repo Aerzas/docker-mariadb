@@ -7,7 +7,6 @@ Docker Hub image: [https://hub.docker.com/r/aerzas/mariadb](https://hub.docker.c
 ## Docker compose example
 
 ```yaml
-version: '3.5'
 services:
     php:
         image: aerzas/mariadb:10.11-latest
